@@ -22,5 +22,5 @@ To ensure your application will successfully compile to an object file, some cau
 pain free. I will refer multiple times to "runtime code". This means code that doesn't get executed as part of spices and sugars, ie. code that will actually end up in your
 executable.
 - Avoid usage of compiler API specific types like `string`, `Value` or `Scope` (among others) in runtime code.
-- Don't use the `error` family of functions. Raising your own error objects is fine.
-- Don't use `print`. Besides depending on `libscopesrt` (which you can optionally link to), it makes use of a `Value` and can't be serialized. 
+- Don't use the `error` family of functions in runtime code. Raising your own error objects is fine.
+- Don't use `print` in runtime code. Besides depending on `libscopesrt` (which you can optionally link to), it makes use of a `Value` and can't be serialized. 
