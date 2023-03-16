@@ -7,7 +7,7 @@ independence from libscopesrt.
 ## Why?
 Although the standard libraries avoid reliance on the Scopes API and usage of the non-serializable `string` type, a couple warts remain, since `assert` is non serializable
 and used somewhat liberally, and `Map` / `Set` use the API for its hash function. This module provides a replacement for `assert` and a C file is provided that implements
-the same hash functions depending directly on xxHash and using the same symbols, in order to link correctly.
+the same hash functions depending directly on [xxHash](https://github.com/Cyan4973/xxHash) and using the same symbols, in order to link correctly.
 
 ## Usage
 (more details pending)
