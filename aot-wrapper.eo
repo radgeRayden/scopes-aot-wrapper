@@ -1,0 +1,33 @@
+VERSION := "master"
+SUMMARY := "Wrapper for ahead-of-time compilation of Scopes code"
+
+archive :=
+    download
+        "https://github.com/radgeRayden/scopes-aot-wrapper/archive/{VERSION}.tar.gz"
+
+xxHash-dir :=
+    commonpath
+        extract
+            download
+                "https://github.com/Cyan4973/xxHash/archive/v0.8.1.tar.gz"
+
+preinstall-dir :=
+    then
+        build-path :=
+            commonpath
+                extract archive
+        build-command :=
+            shell
+                mkdir "{build-path}/build"
+
+        build-command "gcc -c -O2 ../hash.c -o hash.o -I\"{xxHash-dir}\""
+
+        build-path
+
+package aot-wrapper
+    platform windows-mingw linux unknown
+    summary SUMMARY
+    version VERSION
+
+    alias "/lib/scopes/packages/aot-wrapper.sc" "{preinstall-dir}/aot-wrapper.sc"
+    in "." "{preinstall-dir}/build"
